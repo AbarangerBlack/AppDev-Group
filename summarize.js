@@ -1,10 +1,10 @@
-document.getElementById("summarizeBTN").addEventListener("click", async() => {
+document.getElementById("summarizeBTN").addEventListener("click", async () => {
     const text = document.getElementById("textBox").value;
 
     const res = await fetch("http://localhost:3000/summarize", {
-        method:"POST",
+        method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ text})
+        body: JSON.stringify({ text })
     });
 
     const data = await res.json();
