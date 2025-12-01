@@ -21,7 +21,7 @@ const generationConfig = {
 
 const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash",
-    generationConfig,   // <-- THIS MUST BE THE KEY NAME
+    generationConfig,
 });
 
 app.post("/summarize", async (req, res) => {
