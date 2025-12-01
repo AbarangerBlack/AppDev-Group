@@ -1,34 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <script src="encryption.js" defer></script>
-    <link rel="stylesheet" href="style.css">
-</head> 
-
+    <title>Register</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
 <body>
-    <div class="container">
-        <!-- LOGIN TITLE -->
-        <h1>Login System</h1>
-        <h2>Group 2</h2>
 
-        <!-- REGISTER -->
-        <h3>Register</h3>
-        <input type="text" id="regUser" placeholder="Username"> 
-        <input type="password" id="regPass" placeholder="Password (min 8 chars)"> 
-        <button id="registerBtn">Register</button>
+<div class="container">
+    <h1>Register</h1>
 
-        <hr>
+    <input type="text" id="regUser" placeholder="Username">
+    <input type="password" id="regPass" placeholder="Password (min 8 chars)">
+    <button id="registerBtn">Register</button>
 
-         <!-- LOGIN -->
-        <h3>Login</h3>
-        <input type="text" id="loginUser" placeholder="Username"> 
-        <input type="password" id="loginPass" placeholder="Password"> 
-        <button id="loginBtn">Login</button>
+    <p id="message"></p>
 
-        <p id="message"></p>
-    </div>
+    <a class="link" href="login.html">Already have an account?</a>
+</div>
+
+<script src="register.js"></script>
 </body>
 </html>
