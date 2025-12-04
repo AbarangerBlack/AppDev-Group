@@ -41,6 +41,12 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
 
     if(encrypted === userData.password){
         document.getElementById("message").textContent = "Login successful!";
+        document.getElementById("message").style.color = "green";
+
+        setTimeout(() => {
+            window.location.href = "main.html";
+        }, 1000);
+
     }
     else{
         document.getElementById("message").textContent = "Invalid password!";
