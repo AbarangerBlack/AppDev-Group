@@ -9,39 +9,43 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+// Initialize client
+const genAI = new GoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
 
-const generationConfig = {
-    temperature: 1,
-    topP: 0.95,
-    topK: 40,
-    maxOutputTokens: 100,
-    responseMimeType: "text/plain",
-};
-
-const model = genAI.getGenerativeModel({
-    model: "gemini-2.0-flash",
-    generationConfig,
-});
+// Get a generative model instance
+const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash" });
 
 app.post("/summarize", async (req, res) => {
-    try {
-        const text = req.body.text;
+  try {
+    const text = req.body.text?.trim() ?? '';
+    if (!text) return res.status(400).json({ error: "No text provided" });
 
-        const result = await model.generateContent({
-            contents: [{
-                role: "user",
-                parts: [{
-                    text: `Summarize this text in very simple words and bullet points:\n\n${text}`
-                }]
-            }]
-        });
+    // Generate summary
+    const response = await model.generateContent({
+      // prompt as user input
+      contents: [
+        {
+          role: "user",
+          parts: [
+            { text: `Summarize this text in very simple words and bullet points:\n\n${text}` }
+          ]
+        }
+      ]
+    });
 
-        res.json({ summary: result.response.text() });
+    console.log("Full API response:", response);
 
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+    // Safely extract the text
+    const summary =
+      response?.candidates?.[0]?.content?.[0]?.text ||
+      response?.outputs?.[0]?.content?.[0]?.text ||
+      "No summary generated.";
+
+    res.json({ summary, reply: summary });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: err.message });
+  }
 });
 
 app.listen(3000, () => console.log("Server running on port 3000"));

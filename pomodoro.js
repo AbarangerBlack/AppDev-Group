@@ -1,3 +1,5 @@
+// Pomodoro.js
+
 let timer;
 let timeLeft = 1500; // default 25 mins
 
@@ -5,8 +7,8 @@ const timerDisplay = document.getElementById("timer");
 
 const MODES = {
     pomodoro: 1500,       // 25:00
-    short: 300,           // 5:00
-    long: 900             // 15:00
+    long: 900,             // 15:00
+    short: 300           // 5:00
 };
 
 // Change mode buttons
