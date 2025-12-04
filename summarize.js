@@ -1,13 +1,19 @@
-// Summarize.js
-document.getElementById("summarizeBTN").addEventListener("click", async() => {
+// SUMMARIZE.JS
+const summarize = async () => {
     const text = document.getElementById("textBox").value;
 
     const res = await fetch("http://localhost:3000/summarize", {
-        method:"POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ text})
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text })
     });
 
     const data = await res.json();
     document.getElementById("aiBox").value = data.summary;
-});
+};
+
+// Summarize button
+document.getElementById("summarizeBTN").addEventListener("click", summarize);
+
+// Regenerate button
+document.getElementById("restart").addEventListener("click", summarize);
