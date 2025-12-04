@@ -1,24 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="pomodoro.js" defer></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For AI text box</title>
+    <title>Pomodoro + AI Task Summarizer</title>
 
-    <script src="summarize.js" defer> </script>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="pomodoro.js" defer></script>
+    <script src="summarize.js" defer></script>
 </head>
+
 <body>
-    <div class= "task_container">
-        <!-- TEXT BOXS -->
-        <h1>Your Task Box</h1>
+
+<div class="main_wrapper">
+
+    <!-- LEFT SIDE — POMODORO TIMER -->
+    <div class="timer_section">
+
+        <h1 class="title">MyTime</h1>
+
+        <div class="mode_buttons">
+            <button class="mode_btn active" data-mode="pomodoro">Pomodoro</button>
+            <button class="mode_btn" data-mode="short">Short Break</button>
+            <button class="mode_btn" data-mode="long">Long Break</button>
+        </div>
+
+        <div class="timer_display">
+            <span id="timer">25:00</span>
+        </div>
+
+        <div class="timer_controls">
+            <button id="startBtn">START</button>
+            <button id="pauseBtn">PAUSE</button>
+            <button id="restartBtn">RESTART</button>
+        </div>
+
+    </div>
+
+
+    <!-- RIGHT SIDE — AI TEXT + SUMMARY -->
+    <div class="task_container">
+
+        <h2>ENTER TASK:</h2>
         <textarea id="textBox" placeholder="Input your Task"></textarea>
         <button id="summarizeBTN">Summarize it!</button>
 
-
-        <!-- AI TASK SUMMARIZER-->
-        <h1>AI Task Summarizer Box</h1>
+        <h2>AI SUMMARIZE:</h2>
         <textarea id="aiBox" placeholder="Generate AI summary here"></textarea>
         <button id="restart">Regenerate it!</button>
+
     </div>
+
+</div>
+
 </body>
 </html>

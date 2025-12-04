@@ -3,32 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <script src="encryption.js" defer></script>
+    <title>Register</title>
     <link rel="stylesheet" href="style.css">
-</head> 
-
+    <script src="register.js" defer></script>
+</head>
 <body>
     <div class="container">
-        <!-- LOGIN TITLE -->
-        <h1>Login System</h1>
-        <h2>Group 2</h2>
+        <h1>Register</h1>
 
-        <!-- REGISTER -->
-        <h3>Register</h3>
-        <input type="text" id="regUser" placeholder="Username"> 
-        <input type="password" id="regPass" placeholder="Password (min 8 chars)"> 
+        <input type="text" id="regUser" placeholder="Username">
+
+       <div class="password-wrapper">
+    <input type="password" id="loginPass" placeholder="Password">
+
+    <!-- Circle toggle -->
+    <div class="toggleCircle" data-target="loginPass"></div>
+</div>
+
+
         <button id="registerBtn">Register</button>
 
-        <hr>
-
-         <!-- LOGIN -->
-        <h3>Login</h3>
-        <input type="text" id="loginUser" placeholder="Username"> 
-        <input type="password" id="loginPass" placeholder="Password"> 
-        <button id="loginBtn">Login</button>
-
         <p id="message"></p>
+
+        <p>Already have an account? <a href="login.html">Login</a></p>
     </div>
 </body>
 </html>

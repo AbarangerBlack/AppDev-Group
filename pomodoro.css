@@ -1,0 +1,84 @@
+/* ============================
+   POMODORO TIMER STYLES
+   ============================ */
+
+.main_wrapper {
+    display: flex;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.timer_section {
+    width: 350px;
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: black;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.mode_buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.mode_btn {
+    flex: 1;
+    padding: 8px;
+    margin: 3px;
+    border: none;
+    border-radius: 8px;
+    background: #d6d6d6;
+    cursor: pointer;
+}
+
+.mode_btn.active {
+    background: #527aff;
+    color: white;
+}
+
+.timer_display {
+    font-size: 60px;
+    text-align: center;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.timer_controls button {
+    width: 32%;
+    padding: 10px;
+    border: none;
+    background: #527aff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* RIGHT SIDE — AI BOXES */
+.task_container {
+    width: 450px;
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    color: black;
+}
+
+.task_container textarea {
+    width: 100%;
+    height: 120px;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.task_container button {
+    margin-bottom: 15px;
+}
