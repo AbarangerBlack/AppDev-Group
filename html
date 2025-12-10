@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Collapsible Chat Box</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f4f4f4;
+        height: 2000px;
+    }
+
+    .chat-button {
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        font-size: 26px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .chat-box {
+        position: fixed;
+        bottom: 100px;
+        right: 25px;
+        width: 320px;
+        max-height: 450px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        display: none; /* hidden by default */
+        overflow: hidden;
+        flex-direction: column;
+    }
+
+    .chat-header {
+        background: #007bff;
+        color: white;
+        padding: 12px;
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .chat-messages {
+        padding: 10px;
+        height: 250px;
+        overflow-y: auto;
+        background: #f9f9f9;
+    }
+
+    .chat-input {
+        display: flex;
+        border-top: 1px solid #ddd;
+    }
+
+    .chat-input input {
+        flex-grow: 1;
+        border: none;
+        padding: 10px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    .chat-input button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 0 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+</style>
+</head>
+
+<body>
+
+<button class="chat-button" id="chatToggle">💬</button>
+
+<div class="chat-box" id="chatBox">
+    <div class="chat-header">Chat Support</div>
+    <div class="chat-messages" id="chatMessages">
+        <p><strong>Bot:</strong> Hi! How can I help you today?</p>
+    </div>
+
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Type a message..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById("chatToggle").onclick = function () {
+        const chatBox = document.getElementById("chatBox");
+        chatBox.style.display = (chatBox.style.display === "flex") ? "none" : "flex";
+    };
+
+    function sendMessage() {
+        const input = document.getElementById("userInput");
+        const messages = document.getElementById("chatMessages");
+
+        if (input.value.trim() === "") return;
+
+        const userMsg = document.createElement("p");
+        userMsg.innerHTML = `<strong>You:</strong> ${input.value}`;
+        messages.appendChild(userMsg);
+
+        const botMsg = document.createElement("p");
+        botMsg.innerHTML = `<strong>Bot:</strong> Thanks for your message!`;
+        messages.appendChild(botMsg);
+
+        messages.scrollTop = messages.scrollHeight;
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>
