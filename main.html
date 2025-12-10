@@ -5,16 +5,235 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Time</title>
 
-    <!-- INSERT YOUR OWN CSS FILE -->
-    <!-- <link rel="stylesheet" href="style.css">  -->
-     
+    <style>
+        /* -------- General Styles -------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e6f4ff; /* very light blue */
+            color: #033b5c;
+        }
+
+        /* -------- Header -------- */
+        header {
+            background-color: #b3ddff; /* soft light blue */
+            padding: 20px 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #033b5c;
+        }
+
+        /* -------- Main Wrapper -------- */
+        .main_wrapper {
+            display: flex;
+            gap: 40px;
+            padding: 40px;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* -------- Timer Section (Left Side) -------- */
+        .timer_section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            text-align: center;
+            width: 350px;
+            flex-shrink: 0;
+        }
+
+        .title {
+            font-size: 32px;
+            color: #034f84;
+            margin-bottom: 30px;
+        }
+
+        .mode_buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .mode_btn {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 2px solid #4da6ff;
+            background-color: #e6f4ff;
+            color: #034f84;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .mode_btn:hover {
+            background-color: #d6ecff;
+            border-color: #1a8cff;
+        }
+
+        .mode_btn.active {
+            background-color: #4da6ff;
+            color: white;
+            border-color: #1a8cff;
+        }
+
+        .timer_display {
+            background: linear-gradient(#d6ecff, #e6f4ff);
+            padding: 40px 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        #timer {
+            font-size: 64px;
+            font-weight: bold;
+            color: #034f84;
+        }
+
+        .timer_controls {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .timer_controls button {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4da6ff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .timer_controls button:hover {
+            background-color: #1a8cff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(26, 140, 255, 0.3);
+        }
+
+        /* -------- Task Container (Right Side) -------- */
+        .task_container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            width: 380px;
+            flex-shrink: 0;
+        }
+
+        .task_container h2 {
+            font-size: 18px;
+            color: #034f84;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+
+        .task_container h2:first-child {
+            margin-top: 0;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            border: 2px solid #b3ddff;
+            border-radius: 6px;
+            resize: vertical;
+            min-height: 100px;
+            color: #033b5c;
+            background-color: #f9fcfe;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #4da6ff;
+            background-color: #ffffff;
+        }
+
+        .task_container button {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #4da6ff;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .task_container button:hover {
+            background-color: #1a8cff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(26, 140, 255, 0.3);
+        }
+
+        /* -------- Footer -------- */
+        footer {
+            background-color: #b3ddff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            color: #033b5c;
+            font-weight: 500;
+        }
+
+        /* -------- Responsive Design -------- */
+        @media (max-width: 768px) {
+            .main_wrapper {
+                flex-direction: column;
+                align-items: center;
+                padding: 20px;
+            }
+
+            .timer_section, .task_container {
+                width: 100%;
+                max-width: 500px;
+            }
+
+            #timer {
+                font-size: 48px;
+            }
+
+            header {
+                padding: 15px 20px;
+            }
+        }
+    </style>
+
     <script src="pomodoro.js" defer></script>
     
 </head>
 
 <body>
 
-<div class="main_wrapper">
+    <!-- Header -->
+    <header>
+        <h1>MyTime - Pomodoro Timer</h1>
+    </header>
+
+    <div class="main_wrapper">
 
     <!-- LEFT SIDE — POMODORO TIMER -->
     <div class="timer_section">
@@ -53,7 +272,11 @@
 
     </div>
 
-</div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 MyTime. All rights reserved.</p>
+    </footer>
+
 <script src="summarize.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer</title>
+
+    <style>
+        /* -------- General Styles -------- */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #e6f4ff; /* very light blue */
+            color: #033b5c;
+        }
+
+        a {
+            text-decoration: none;
+            color: #034f84;
+        }
+
+        /* -------- Header -------- */
+        header {
+            background-color: #b3ddff; /* soft light blue */
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        nav a {
+            margin-left: 25px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* -------- Hero Section -------- */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(#d6ecff, #e6f4ff);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            background-color: #4da6ff;
+            color: white;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: #1a8cff;
+        }
+
+        /* -------- Content Section -------- */
+        .content {
+            padding: 60px 40px;
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: #034f84;
+        }
+
+        /* -------- Footer -------- */
+        footer {
+            background-color: #b3ddff;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">MyTime: Pomodoro Timer</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="login.html">Log In</a>
+            <a href="register.html">Register</a>
+            <a href="#">FAQS</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to MyTime Pomodoro Timer</h1>
+        <p>Helping you with getting start on track.</p>
+        <a href="register.html" style="display: inline-block; padding: 12px 25px; font-size: 18px; border: none; border-radius: 6px; background-color: #4da6ff; color: white; cursor: pointer; text-decoration: none;">Get Started</a>
+    </section>
+
+    <!-- Content Section -->
+    <section class="content">
+        <div class="card">
+            <h3>Fast</h3>
+            <p>Our services are quick and reliable.</p>
+        </div>
+
+        <div class="card">
+            <h3>Secure</h3>
+            <p>Your data is protected with modern security.</p>
+        </div>
+
+        <div class="card">
+            <h3>Friendly</h3>
+            <p>A user-first approach in everything we do.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+       "2025 MyTime. All rights reserved."
+    </footer>
+
+</body>
+</html>
