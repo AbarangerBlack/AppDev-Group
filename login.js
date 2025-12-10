@@ -1,29 +1,38 @@
-document.querySelectorAll(".togglePass").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const target = document.getElementById(btn.dataset.target);
-        if (target.type === "password") {
-            target.type = "text";
-            btn.textContent = "Hide";
-        } else {
-            target.type = "password";
-            btn.textContent = "Show";
-        }
+document.querySelectorAll(".toggleCircle").forEach(circle => {
+    circle.addEventListener("click", () => {
+        const target = document.getElementById(circle.dataset.target);
+        target.type = target.type === "password" ? "text" : "password";
+        circle.classList.toggle("active");
     });
 });
 
-document.getElementById("loginBtn").addEventListener("click", () => {
-    const user = document.getElementById("loginUser").value;
-    const pass = document.getElementById("loginPass").value;
-    const msg = document.getElementById("message");
+document.getElementById("loginBtn").addEventListener("click", async () => {
+    const username = document.getElementById("loginUser").value;
+    const password = document.getElementById("loginPass").value;
 
-    const storedUser = localStorage.getItem("user");
-    const storedPass = localStorage.getItem("pass");
+    if (!username || !password) {
+        document.getElementById("message").textContent = "Please enter username and password!";
+        return;
+    }
 
-    if (user === storedUser && pass === storedPass) {
-        msg.textContent = "Login successful!";
-        msg.style.color = "green";
+    const stored = localStorage.getItem(username);
+    if (!stored) {
+        document.getElementById("message").textContent = "User not found!";
+        return;
+    }
+
+    const userData = JSON.parse(stored);
+    const encrypted = await encrypt(password);
+
+    if (encrypted === userData.password) {
+        document.getElementById("message").textContent = "Login successful!";
+        document.getElementById("message").style.color = "green";
+
+        setTimeout(() => {
+            window.location.href = "main.html";
+        }, 1000);
     } else {
-        msg.textContent = "Invalid username or password.";
-        msg.style.color = "red";
+        document.getElementById("message").textContent = "Invalid password!";
+        document.getElementById("message").style.color = "red";
     }
 });

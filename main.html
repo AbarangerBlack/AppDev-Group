@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="pomodoro.js" defer></script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pomodoro + AI Task Summarizer</title>
+    <title>My Time</title>
 
-    <link rel="stylesheet" href="style.css">
-
+    <!-- INSERT YOUR OWN CSS FILE -->
+    <!-- <link rel="stylesheet" href="style.css">  -->
+     
     <script src="pomodoro.js" defer></script>
-    <script src="summarize.js" defer></script>
+    
 </head>
 
 <body>
@@ -23,9 +22,9 @@
         <h1 class="title">MyTime</h1>
 
         <div class="mode_buttons">
-            <button class="mode_btn active" data-mode="pomodoro">Pomodoro</button>
-            <button class="mode_btn" data-mode="short">Short Break</button>
-            <button class="mode_btn" data-mode="long">Long Break</button>
+            <button class="mode_btn active" data-mode="pomodoro">25 minutes</button>
+            <button class="mode_btn" data-mode="long">15 minutes</button>
+            <button class="mode_btn" data-mode="short">5 minutes</button>
         </div>
 
         <div class="timer_display">
@@ -55,6 +54,6 @@
     </div>
 
 </div>
-
+<script src="summarize.js" defer></script>
 </body>
 </html>

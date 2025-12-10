@@ -1,43 +1,33 @@
 document.querySelectorAll(".toggleCircle").forEach(circle => {
     circle.addEventListener("click", () => {
         const target = document.getElementById(circle.dataset.target);
-
-        if (target.type === "password") {
-            target.type = "text";
-            circle.classList.add("active");
-        } else {
-            target.type = "password";
-            circle.classList.remove("active");
-        }
+        target.type = target.type === "password" ? "text" : "password";
+        circle.classList.toggle("active");
     });
 });
 
+document.getElementById("registerBtn").addEventListener("click", async () => {
+    const username = document.getElementById("regUser").value;
+    const password = document.getElementById("regPass").value;
 
-document.getElementById("registerBtn").addEventListener("click", () => {
-    const user = document.getElementById("regUser").value;
-    const pass = document.getElementById("regPass").value;
-    const msg = document.getElementById("message");
-
-    if (user === "" || pass === "") {
-        msg.textContent = "All fields required.";
-        msg.style.color = "red";
+    if (!username || !password) {
+        document.getElementById("message").textContent = "Please enter username and password!";
         return;
     }
 
-    if (pass.length < 8) {
-        msg.textContent = "Password must be at least 8 characters.";
-        msg.style.color = "red";
+    if(password.length < 8){
+        document.getElementById("message").textContent = "Password must be at least 8 characters long.";
         return;
     }
 
-    // Store in localStorage for demo
-    localStorage.setItem("user", user);
-    localStorage.setItem("pass", pass);
+    const encrypted = await encrypt(password);
+    const userData = { username, password: encrypted };
 
-    msg.textContent = "Registration successful! Redirecting...";
-    msg.style.color = "green";
+    localStorage.setItem(username, JSON.stringify(userData));
 
-    setTimeout(() => {
-        window.location.href = "login.html";
-    }, 1500);
+    document.getElementById("message").textContent = "Registration successful!";
+    document.getElementById("message").style.color = "green";
+
+    document.getElementById("regUser").value = "";
+    document.getElementById("regPass").value = "";
 });

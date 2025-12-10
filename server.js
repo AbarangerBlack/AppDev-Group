@@ -9,7 +9,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+console.log("API Key loaded:", process.env.GEMINI_API_KEY);
+const genAI = new GoogleGenerativeAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const generationConfig = {
     temperature: 1,
@@ -29,15 +30,21 @@ app.post("/summarize", async (req, res) => {
         const text = req.body.text;
 
         const result = await model.generateContent({
-            contents: [{
-                role: "user",
-                parts: [{
-                    text: `Summarize this text in very simple words and bullet points:\n\n${text}`
-                }]
-            }]
-        });
+    contents: [{
+        role: "user",
+        parts: [{
+            text: `Summarize this text in very simple words and bullet points:\n\n${text}`
+        }]
+    }]
+});
 
-        res.json({ summary: result.response.text() });
+let summary = result.output[0].content[0].text;
+
+// Convert * bullets to • bullets
+summary = summary.replace(/^\s*\*\s+/gm, "• ");
+
+res.json({ summary });
+
 
     } catch (error) {
         res.status(500).json({ error: error.message });
